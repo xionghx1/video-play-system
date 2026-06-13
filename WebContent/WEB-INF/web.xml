@@ -3,6 +3,21 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <!-- 应用名称 -->
+    <display-name>VideoPlaySystem</display-name>
+
+    <!-- 过滤器配置 -->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.video.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Servlet 配置 -->
+    <!-- 登录 -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.video.controller.LoginServlet</servlet-class>
@@ -12,6 +27,7 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <!-- 登出 -->
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.video.controller.LogoutServlet</servlet-class>
@@ -21,14 +37,58 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
+    <!-- 注册 -->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.video.controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <!-- 修改密码 -->
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.video.controller.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+
+    <!-- 搜索 -->
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>com.video.controller.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+    <!-- 播放 -->
+    <servlet>
+        <servlet-name>PlayServlet</servlet-name>
+        <servlet-class>com.video.controller.PlayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PlayServlet</servlet-name>
+        <url-pattern>/play</url-pattern>
+    </servlet-mapping>
+
+    <!-- 欢迎页面 -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- Session 配置 -->
     <session-config>
         <cookie-config>
             <http-only>true</http-only>
         </cookie-config>
         <tracking-mode>COOKIE</tracking-mode>
+        <timeout>30</timeout>
     </session-config>
+
 </web-app>
